@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扩展运算符</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<h1>...写在实参上面， 将数组的内容以逗号分隔</h1>
+<br>
+<code style="white-space: pre-line">
+    function f() {
+    console.log(arguments)
+    }
+
+    args = ["张三", "李四", "王五"]
+    f(...args)
+
+
+</code>>
+<h1>数组合并</h1>
+<code style="white-space: pre-line">
+    xiaopingguo = ["小苹果","小梨"]
+    mingzufeng= ["民族舞","国标舞"]
+
+    xiaomingzu = [...xiaopingguo,...mingzufeng]
+    console.log(xiaomingzu)
+</code>
+
+<script>
+    function f() {
+        console.log(arguments)
+    }
+
+    args = ["张三", "李四", "王五"]
+    f(...args)
+
+
+    xiaopingguo = ["小苹果", "小梨"]
+    mingzufeng = ["民族舞", "国标舞"]
+
+    xiaomingzu = [...xiaopingguo, ...mingzufeng]
+    console.log(xiaomingzu)
+
+    //    数组克隆
+    const abc = ["a","b","c"]
+    const  abcArr = [...abc]
+    console.log(abcArr)
+
+    // 将伪数组转换为真正数组
+    const divs = document.querySelectorAll("div");
+    const divarr = [...divs]
+    console.log(divarr)
+</script>
+</body>
+</html>
