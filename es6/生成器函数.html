@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成器函数</title>
+</head>
+<body>
+
+<!-- 生成器函数就是一个特殊的函数  用星号修饰 * -->
+<h1>生成器函数就是一个特殊的函数 用星号修饰 *</h1>
+<code style="white-space: pre-line">
+
+    function* gen() {
+    console.log("11111")
+    yield "第一段"
+    console.log("22222")
+    yield "第二段"
+    console.log("33333")
+    yield "第三段"
+    console.log("44444")
+    yield "第四段"
+    }
+
+    let iterator = gen();
+    iterator.next()
+    iterator.next()
+    iterator.next()
+    iterator.next()
+</code>
+
+<h1> 参数传递</h1>
+<code style="white-space: pre-line">
+    function * genPara(args){
+    console.log(args)
+    let one = yield 1111;
+    console.log(one)
+    yield 2222;
+    }
+
+    let iterParam = genPara("genParams")
+    iterParam.next()
+    iterParam.next("AAA")
+
+</code>
+
+<script>
+    <!-- 生成器函数就是一个特殊的函数  用星号修饰 * -->
+    function* gen() {
+        console.log("11111")
+        yield "第一段"
+        console.log("22222")
+        yield "第二段"
+        console.log("33333")
+        yield "第三段"
+        console.log("44444")
+        yield "第四段"
+    }
+
+    let iterator = gen();
+    iterator.next()
+    iterator.next()
+    iterator.next()
+    iterator.next()
+    iterator.next()
+
+    //    参数传递
+
+    function* genPara(args) {
+        console.log(args)
+        let one = yield 1111;
+        console.log(one)
+        yield 2222;
+    }
+
+
+    let iterParam = genPara("genParams")
+   console.log(iterParam.next())
+    iterParam.next("AAA")
+
+
+    console.log("===========================================================")
+
+    function one() {
+        setTimeout(() => {
+            console.log(111)
+            iterTime.next()
+
+        }, 1000)
+    }
+
+    function two() {
+        setTimeout(() => {
+            console.log(222);
+            iterTime.next()
+        }, 2000)
+    }
+
+    function three() {
+        setTimeout(() => {
+            console.log(333);
+        }, 3000)
+    }
+
+    function * genTime() {
+        yield one()
+        yield two()
+        yield three()
+    }
+
+    let iterTime = genTime()
+    iterTime.next()
+
+
+
+</script>
+
+</body>
+</html>
