@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symbol基础使用</title>
+</head>
+<body>
+<div>
+    1. Symbol 的值是唯一的，用来解决命名冲突
+    2. Symbol 值不能与其他数据进行运算
+    3. Symbol 定义的对象属性不能使用for...in 循环遍历 ，但是可以使用Reflect.ownKeys 来获取
+    对象的所有键名
+
+    <h2>Symbol.for 创建时变量内容相等，则===比较为true</h2>
+    <code style="white-space: pre-line">
+        let s1 = Symbol("田帅");
+        let s5 = Symbol("田帅");
+        console.log(s1)
+
+        let s2 = Symbol.for("田培融")
+        let s3 = Symbol.for("田培融")
+        console.log(s2)
+
+        console.log(s2===s3) // true
+        console.log(s1===s2) // false
+        console.log(s1===s5)  //false
+    </code>
+
+    <h2>控制类型检测</h2>
+    <code style="white-space: pre-line">
+        class Person{
+        static [Symbol.hasInstance](param){
+        console.log(param)
+        console.log("类型检测")
+        return true;
+        }
+        }
+
+        let o = {
+        name: "o对象"
+        }
+        console.log(o instanceof  Person)  //true
+    </code>
+
+</div>
+
+    <script>
+        let s1 = Symbol("田帅");
+        let s5 = Symbol("田帅");
+        console.log(s1)
+
+        let s2 = Symbol.for("田培融")
+        let s3 = Symbol.for("田培融")
+        console.log(s2)
+
+        console.log(s2===s3) // true
+        console.log(s1===s2) // false
+        console.log(s1===s5)  //false
+
+        // 可以定义，但是无法调用
+        let youxi = {
+            name:"狼人杀",
+            [Symbol("say")]:function (){
+                console.log("我要睡觉")
+            },
+            [Symbol("zibao")]:function () {
+                console.log("我要自曝")
+            }
+        }
+        console.log(youxi)
+
+        class Person{
+            static [Symbol.hasInstance](param){
+                console.log(param)
+                console.log("类型检测")
+                return true;
+            }
+        }
+
+        let o = {
+            name: "o对象"
+        }
+        console.log(o instanceof  Person)  //true
+    </script>
+</body>
+</html>
