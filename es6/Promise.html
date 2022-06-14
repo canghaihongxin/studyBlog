@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise介绍使用</title>
+</head>
+<body>
+<h1>异步编程的解决方案</h1>
+<code style="white-space: pre-line">
+    const p = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+    // let err = "数据读取失败"
+    // reject(err)
+
+    let data = "读取用户信息"
+    resolve(data)
+    }, 1000)
+    })
+
+    p.then(function (value) {
+    console.log(value)
+    }, function (reason) {
+    console.log(reason)
+    })
+</code>
+<script>
+    const p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            // let err = "数据读取失败"
+            // reject(err)
+
+            let data = "读取用户信息"
+            resolve(data)
+        }, 1000)
+    })
+
+    p.then(function (value) {
+        console.log(value)
+    }, function (reason) {
+        console.log(reason)
+    })
+</script>
+</body>
+</html>
