@@ -43,6 +43,44 @@
 
 </code>
 
+<code style="white-space: pre-line">
+
+    function getUsers() {
+    setTimeout(() => {
+    let data = "获取用户数据"
+    shopIter.next(data)
+    }, 1000)
+    }
+
+    function getOrder() {
+    setTimeout(() => {
+    let data = "获取订单数据"
+    shopIter.next(data)
+    }, 1000)
+    }
+
+    function getAccount() {
+    setTimeout(() => {
+    let data = "获取账户数据"
+    shopIter.next(data)
+    }, 1000)
+    }
+
+
+    function* gen() {
+    console.log("执行第一次")
+    let users = yield getUsers()
+    console.log(users);
+    let order =yield getOrder();
+    console.log(order);
+    let account = yield getAccount()
+    console.log(account)
+    }
+
+    let shopIter = gen();
+    shopIter.next()
+</code>
+
 <script>
     <!-- 生成器函数就是一个特殊的函数  用星号修饰 * -->
     function* gen() {
@@ -110,7 +148,42 @@
     let iterTime = genTime()
     iterTime.next()
 
+    console.log("=========================================================")
 
+    function getUsers() {
+        setTimeout(() => {
+            let data = "获取用户数据"
+            shopIter.next(data)
+        }, 1000)
+    }
+
+    function getOrder() {
+        setTimeout(() => {
+            let data = "获取订单数据"
+            shopIter.next(data)
+        }, 1000)
+    }
+
+    function getAccount() {
+        setTimeout(() => {
+            let data = "获取账户数据"
+            shopIter.next(data)
+        }, 1000)
+    }
+
+
+    function* gen() {
+        console.log("执行第一次")
+        let users = yield getUsers()
+        console.log(users);
+        let order =yield getOrder();
+        console.log(order);
+        let account = yield getAccount()
+        console.log(account)
+    }
+
+    let shopIter = gen();
+    shopIter.next()
 
 </script>
 
