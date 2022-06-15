@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class静态成员</title>
+</head>
+<body>
+
+<script>
+    class Phone {
+        static name = "手机"
+        static call = function () {
+            console.log("我可以打电话")
+        }
+    }
+
+    let nokia = new Phone();
+    console.log(nokia)
+    console.log(Phone.call())
+</script>
+</body>
+</html>
