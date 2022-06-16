@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>await表达式</title>
+</head>
+<body>
+<script>
+    // 创建promise 表达 式
+    const p = new Promise((resolve, reject) => {
+        // resolve("成功获取用户数据")
+        reject("获取用户失败")
+    })
+
+    async function main() {
+        try {
+            let result = await p
+            console.log(result)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    main()
+</script>
+
+</body>
+</html>
