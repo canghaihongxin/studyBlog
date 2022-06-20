@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03.使用POST提交数据.html</title>
+    <script src="lib/jquery.js"></script>
+
+</head>
+<body>
+<button id="btnPost">发起POST请求</button>
+<script>
+    $(function () {
+        $('#btnPost').on('click',function () {
+            $.post('https://www.escook.cn/api/addGoods',{
+                bookname:'水浒传',author:'施耐庵',publisher:"河北图书出版社"
+            },function (res){
+                console.log(res)
+            })
+        })
+    })
+</script>
+</body>
+</html>

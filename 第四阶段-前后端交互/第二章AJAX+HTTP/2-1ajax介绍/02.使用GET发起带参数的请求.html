@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02.使用GET发起带参数的请求.html</title>
+    <script src="lib/jquery.js"></script>
+</head>
+<body>
+<button id="btnGet">使用GET发起带参数的请求</button>
+<script>
+    $(function () {
+        $('#btnGet').on('click',function (){
+            $.get("https://www.escook.cn/api/goods",{id:1},function (res){
+                console.log(res)
+            });
+        })
+    })
+</script>
+</body>
+</html>

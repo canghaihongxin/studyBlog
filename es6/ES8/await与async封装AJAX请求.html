@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    <!--  发送AJAX请求，返回的结果是 Promise 对象   -->
+    function sendAjax(url) {
+        return new Promise((resolve, reject) => {
+
+            //1. 创建对象
+            const x = new XMLHttpRequest();
+
+            // 2. 初始化
+            x.open('GET', url);
+
+            // 3. 发送
+            x.send();
+
+            // 4. 事件绑定
+            x.onreadystatechange = function () {
+                if (x.readyState === 4) {
+                    if (x.status >= 200 && x.status < 300) {
+                        // 成功啦
+                        resolve(x.response);
+                    }else {
+                        // 如果失败
+                        reject(x.status)
+                    }
+                }
+            }
+        })
+
+    }
+
+
+    // sendAjax("https://api.apiopen.top/api/sentences").then(value => {
+    //     console.log(value)
+    // })
+
+
+    async function main(){
+        let result = await  sendAjax("https://api.apiopen.top/api/sentences")
+
+        console.log(result)
+    }
+
+    main();
+</script>
+
+</body>
+</html>
+

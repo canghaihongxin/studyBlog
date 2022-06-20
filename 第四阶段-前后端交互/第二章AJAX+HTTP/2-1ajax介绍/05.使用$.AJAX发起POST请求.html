@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用$.AJAX发起POST请求</title>
+
+    <script src="lib/jquery.js"></script>
+
+</head>
+<body>
+
+<button id="btnGet">AJAX发起POST请求</button>
+<script>
+    $(function () {
+        $('#btnGet').on('click',function () {
+            $.ajax({
+                type: 'POST',
+                url: 'https://www.escook.cn/api/goods',
+                data:{
+                    name: "衣服"
+                },
+                success:function (res) {
+                    console.log(res)
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

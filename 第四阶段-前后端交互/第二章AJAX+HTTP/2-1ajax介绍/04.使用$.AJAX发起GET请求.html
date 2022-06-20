@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用$.AJAX发起GET请求.html</title>
+
+    <script src="lib/jquery.js"></script>
+
+</head>
+<body>
+
+<button id="btnGet">发送GET请求</button>
+<script>
+    $(function () {
+        $('#btnGet').on('click',function () {
+            $.ajax({
+                type: 'GET',
+                url: 'https://www.escook.cn/api/goods',
+                data:{
+                    id: 1
+                },
+                success:function (res) {
+                    console.log(res)
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
