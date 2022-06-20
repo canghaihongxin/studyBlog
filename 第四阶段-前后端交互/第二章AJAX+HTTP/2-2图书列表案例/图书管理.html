@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css"/>
+    <script src="../lib/jquery.js"></script>
+</head>
+<body style="padding: 20px">
+<!--  添加图书的Panel面板 -->
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <div class="panel-title"> 添加新图书</div>
+    </div>
+    <div class="panel-body form-inline">
+        <div class="input-group">
+            <span class="input-group-addon">书名</span>
+            <input id="bookName" type="text" class="form-control" placeholder="请输入书名" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">作者</span>
+            <input id="bookAuthor" type="text" class="form-control" placeholder="请输入作者" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">出版社</span>
+            <input id="bookPublisher" type="text" class="form-control" placeholder="请输入出版社"
+                   aria-describedby="basic-addon1">
+        </div>
+
+        <button id="bookAdd" type="button" class="btn btn-primary">添加</button>
+    </div>
+
+
+</div>
+<!-- 添加图书的表格 -->
+<!-- Table -->
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>图书</th>
+        <th>作者</th>
+        <th>出版社</th>
+        <th>操作</th>
+
+    </tr>
+    </thead>
+    <tbody id="tb">
+
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        // 获取图书列表数据
+        function getGoods() {
+            $.get('https://www.escook.cn/api/goods', function (res) {
+                if (res.status != 0) return alert("获取数据失败！")
+
+                let rows = []
+                $.each(res.data, function (i, item) {
+                    rows.push(`<tr><td>`+item.id+`</td><td>`+item.goods_name+`</td><td>`+item.goods_price+`</td><td></td><td>`+'<a href="javascrip:;" class="del" data-id="'+item.id+'">删除</a>'+`</td></tr>`)
+                })
+
+                $('#tb').empty().append(rows.join(''))
+            })
+        }
+
+        getGoods()
+
+        $('#tb').on('click','.del',function () {
+            let id = $(this).attr('data-id')
+            alert(id)
+        })
+
+        $('#bookAdd').on('click',function () {
+
+            let bookName = $('#bookName').val()
+            let bookAuthor = $('#bookAuthor').val()
+            let bookPublisher = $('#bookPublisher').val()
+
+            alert("添加书名:" +bookName+"          添加作者："+bookAuthor )
+
+        })
+
+    })
+</script>
+</body>
+</html>
